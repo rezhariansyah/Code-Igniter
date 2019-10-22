@@ -5,13 +5,15 @@ class Home extends CI_controller {
     public function __construct()
     {
         parent::__construct();
+
         $this->load->database();
         $this->load->helper('url');
+        $this->load->model('Book_model');
     }
 
     public function index()
     {           
-        $query = $this->db->get("book");
+        $query = $this->Book_model->getBook();
         $data["bookList"] = $query->result_array();
         
         $this->load->view('home', $data);
@@ -20,9 +22,7 @@ class Home extends CI_controller {
     public function detail($url)
     {
         {          
-            // $query = $this->db->query('SELECT * FROM book WHERE url = "'.$url.'" ');
-            $this->db->where('url', $url);
-            $query = $this->db->get('book');
+            $query = $this->Book_model->getSingleBook($url);
             $data['book'] = $query->row_array();
 
             $this->load->view('detail', $data);
