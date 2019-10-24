@@ -7,6 +7,7 @@
 </head>
 <body>
     <h1>Book management</h1>
+    <h3><a href="<?php echo site_url('home/form_add/')?>">Add Book</a></h3>
 
     <?php foreach ($bookList as $key => $book): ?>
         <div class="bookList">

@@ -21,11 +21,37 @@ class Home extends CI_controller {
 
     public function detail($url)
     {
-        {          
-            $query = $this->Book_model->getSingleBook($url);
+        {
+            $query = $this->Book_model->getSingleBook('url', $url);
             $data['book'] = $query->row_array();
 
             $this->load->view('detail', $data);
         }
+    }
+
+    public function form_add()
+    {  
+        if($this->input->post()) {
+            $data['title'] = $this->input->post('title');
+            $data['description'] = $this->input->post('description');
+            $data['url'] = $this->input->post('url');
+            $data['harga'] = $this->input->post('harga');
+            
+            $id = $this->Book_model->addBook($data);
+            if($id)
+                echo "data berhasil disimpan";
+            else
+                echo "data gagal disimpan";
+        }
+
+        $this->load->view('form_add');
+    }
+
+    public function form_edit($id)
+    {
+        $query = $this->Book_model->getSingleBook('id', $id);
+        $data['book'] = $query->row_array();       
+
+        $this->load->view('form_edit', $data);
     }
 }
