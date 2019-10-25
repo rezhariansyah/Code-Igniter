@@ -35,7 +35,7 @@ class Home extends CI_controller {
             $data['title'] = $this->input->post('title');
             $data['description'] = $this->input->post('description');
             $data['url'] = $this->input->post('url');
-            $data['harga'] = $this->input->post('harga');
+            $data['price'] = $this->input->post('price');
             
             $id = $this->Book_model->addBook($data);
             if($id)
