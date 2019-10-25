@@ -50,7 +50,20 @@ class Home extends CI_controller {
     public function form_edit($id)
     {
         $query = $this->Book_model->getSingleBook('id', $id);
-        $data['book'] = $query->row_array();       
+        $data['book'] = $query->row_array();     
+        
+        if($this->input->post()) {
+            $editBook['title'] = $this->input->post('title');
+            $editBook['description'] = $this->input->post('description');
+            $editBook['url'] = $this->input->post('url');
+            $editBook['price'] = $this->input->post('price');
+            
+            $id = $this->Book_model->updateBook($id, $editBook);
+            if($id)
+                echo "data berhasil diedit";
+            else
+                echo "data gagal diedit";
+        }
 
         $this->load->view('form_edit', $data);
     }

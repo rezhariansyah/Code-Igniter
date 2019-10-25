@@ -6,6 +6,8 @@
     <title>Detail</title>
 </head>
 <body>
+    
+    <h2><a href="<?php echo site_url('home/form_edit/').$book['id']; ?>">Edit this book</a></h2>
     <h1><?php echo $book['title']; ?></h1>
     <span>Price <?php echo $book['price']; ?></span>
     <p><?php echo $book['description']; ?></p>

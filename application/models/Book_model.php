@@ -16,7 +16,14 @@ class book_model extends CI_model {
 
     public function addBook($data)
     {
-        $this->db->insert('book', $data);
-        return $this->db->insert_id();
+        return $this->db->insert('book', $data);
+        // return $this->db->insert_id();
+    }
+
+    public function updateBook($id, $editBook)
+    {
+        $this->db->where('id', $id);
+        $this->db->update('book', $editBook);
+        return $this->db->affected_rows('book', $editBook);
     }
 }
