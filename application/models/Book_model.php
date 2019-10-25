@@ -13,7 +13,6 @@ class book_model extends CI_model {
         $this->db->where($field, $value);
         return $this->db->get('book');
     }
-
     public function addBook($data)
     {
         return $this->db->insert('book', $data);
