@@ -45,12 +45,12 @@
           <p class="post-meta">Posted by
             <?php echo $book['created_at']; ?> </p>
             <p class="post-meta">
-              <button type="button" class="btn btn-primary btn-sm"><a  href="<?php echo site_url('home/form_edit/'.$book['id']); ?>">Edit</a></button>
-              <button type="button" class="btn btn-danger btn-sm"><a href="<?php echo site_url('home/delete_book/'.$book['id']); ?>">Delete</a></button>
+              <a  href="<?php echo site_url('home/form_edit/'.$book['id']); ?>"><button type="button" class="btn btn-primary btn-sm">Edit</button></a>
+              <a href="<?php echo site_url('home/delete_book/'.$book['id']); ?>"><button type="button" class="btn btn-danger btn-sm">Delete</button></a>
             </p>
         </div>
         <hr>
-    <?php endforeach; ?>
+      <?php endforeach; ?>
         
       </div>
     </div>

@@ -41,12 +41,14 @@ class Home extends CI_controller {
             $data['price'] = $this->input->post('price');
             
             $id = $this->Book_model->addBook($data);
-            if($id)
-                echo "data berhasil disimpan";
-            else
-                echo "data gagal disimpan";
+            if($id)                
+                echo '<div class="alert alert-primary" role="alert">
+                        A simple warning alert—check it out!
+                    </div>';
+                
+                redirect('/');
+                
         }
-
         $this->load->view('form_add');
     }
 
