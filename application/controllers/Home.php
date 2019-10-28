@@ -12,9 +12,12 @@ class Home extends CI_controller {
     }
 
     public function index()
-    {           
+    {        
+        // find book   
         $query = $this->Book_model->getBook();
         $data["bookList"] = $query->result_array();
+
+        $data['count'] = $query->num_rows();
         
         $this->load->view('home', $data);
     }
@@ -59,12 +62,20 @@ class Home extends CI_controller {
             $editBook['price'] = $this->input->post('price');
             
             $id = $this->Book_model->updateBook($id, $editBook);
-            if($id)
-                echo "data berhasil diedit";
-            else
-                echo "data gagal diedit";
+                      
+            redirect('/');
+            
         }
 
         $this->load->view('form_edit', $data);
+        
+    }
+
+    public function delete_book($id)
+    {
+        $this->Book_model->delete_book($id);
+        
+        redirect('/');      
     }
 }
+

@@ -1,24 +1,61 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home</title>
-</head>
-<body>
-    <h1>Book management</h1>
-    <h3><a href="<?php echo site_url('home/form_add/')?>">Add Book</a></h3>
+<?php $this->load->view('partials/header'); ?>
 
-    <?php foreach ($bookList as $key => $book): ?>
-        <div class="bookList">
-            <h2>
-                <a href="<?php echo site_url('home/detail/').$book['url']; ?>">
-                <?php echo $book['title']; ?></a>
-            </h2>
-            <p><?php echo $book['price']; ?></p>
-            <p><?php echo $book['description']; ?></p>
+<!-- Page Header -->
+  <header class="masthead" style="background-image: url('<?php echo base_url(); ?>assets/img/home-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <div class="site-heading" style="padding-bottom: 50px;">
+            <h1>Book Management <br> Code Igniter</h1>
+            <span class="subheading">So many books, so little time.</span>
+          </div>
         </div>
+      </div>
+      <div class="row">
+          <div class="col-lg-5 mx-auto" style="padding-bottom: 80px;">
+            <form>
+                <div class="form-group">
+                        <input type="text" name="find" class="form-control" placeholder="Book title...">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+
+      <?php if($count == 0) {
+        echo "<div class='alert alert-primary' role='alert'>
+                Buku tidak tersedia
+              </div>";
+      } ?>
+
+      <?php foreach ($bookList as $key => $book): ?>
+        <div class="post-preview">
+          <a href="<?php echo site_url('home/detail/').$book['url']; ?>">
+            <h2 class="post-title">
+              <?php echo $book['title']; ?>
+            </h2>
+          </a>
+          <p class="post-meta">Posted by
+            <?php echo $book['created_at']; ?> </p>
+            <p class="post-meta">
+              <button type="button" class="btn btn-primary btn-sm"><a  href="<?php echo site_url('home/form_edit/'.$book['id']); ?>">Edit</a></button>
+              <button type="button" class="btn btn-danger btn-sm"><a href="<?php echo site_url('home/delete_book/'.$book['id']); ?>">Delete</a></button>
+            </p>
+        </div>
+        <hr>
     <?php endforeach; ?>
-    
-</body>
-</html>
+        
+      </div>
+    </div>
+  </div>
+  <hr>
+
+<?php $this->load->view('partials/footer'); ?>
+
