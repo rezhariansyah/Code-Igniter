@@ -11,24 +11,24 @@
         </div>
         <div class="row">
             <div class="col-lg-8 mx-auto mb-5">
-                <form method="POST">
+                <?php echo form_open(); ?>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label>Title</label>
-                            <input type="text" class="form-control" name="title" placeholder="Title">
+                            <?php echo form_input('title',null,'class="form-control" placeholder="Title"'); ?>
                         </div>
                         <div class="form-group col-md-6">
                             <label>Price</label>
-                            <input type="number" class="form-control" name="price" placeholder="Price">
+                            <?php echo form_input('price',null,'class="form-control" type="number" placeholder="Price"'); ?>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Url</label>
-                        <input type="text" class="form-control" name="url" placeholder="Book-title">
+                        <?php echo form_input('url',null,'class="form-control" placeholder="Book-title"'); ?>
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Description</label>
-                        <textarea class="form-control" name="description" rows="3"></textarea>
+                        <?php echo form_textarea('description',null,'class="form-control"'); ?>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

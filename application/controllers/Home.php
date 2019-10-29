@@ -6,8 +6,6 @@ class Home extends CI_controller {
     {
         parent::__construct();
 
-        $this->load->database();
-        $this->load->helper('url');
         $this->load->model('Book_model');
     }
 
@@ -35,6 +33,7 @@ class Home extends CI_controller {
     public function form_add()
     {  
         if($this->input->post()) {
+            
             $data['title'] = $this->input->post('title');
             $data['description'] = $this->input->post('description');
             $data['url'] = $this->input->post('url');
