@@ -1,6 +1,12 @@
 <?php $this->load->view('partials/header'); ?>
 <!-- Page Header -->
-<header class="masthead" style="background-image: url('<?php echo base_url(); ?>assets/img/post-bg.jpg')">
+<?php
+if (empty($book['image']))
+  $image = base_url() . 'assets/img/post-bg.jpg';
+else
+  $image = base_url() . 'uploads/' . $book['image'];
+?>
+<header class="masthead" style="background-image: url('<?php echo $image; ?>')">
   <div class="overlay"></div>
   <div class="container">
     <div class="row">

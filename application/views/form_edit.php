@@ -11,26 +11,30 @@
         </div>
         <div class="row">
             <div class="col-lg-8 mx-auto mb-5">
-                <form method="POST">
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label>Title</label>
-                            <input type="text" class="form-control" name="title" value="<?php echo $book['title']; ?>" placeholder="Title">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label>Price</label>
-                            <input type="number" class="form-control" name="price" value="<?php echo $book['price']; ?>" placeholder="Price">
-                        </div>
+                <?php echo form_open_multipart(); ?>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Title</label>
+                        <?php echo form_input('title', $book['title'], 'class="form-control" placeholder="Title"'); ?>
                     </div>
-                    <div class="form-group">
-                        <label>Url</label>
-                        <input type="text" class="form-control" name="url" value="<?php echo $book['url']; ?>" placeholder="Book-title">
+                    <div class="form-group col-md-6">
+                        <label>Price</label>
+                        <?php echo form_input('price', $book['price'], 'class="form-control" type="number" placeholder="Price"'); ?>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Description</label>
-                        <textarea class="form-control" name="description" rows="3"><?php echo $book['description']; ?></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+                <div class="form-group">
+                    <label>Url</label>
+                    <?php echo form_input('url', $book['url'], 'class="form-control" placeholder="Book-title"'); ?>
+                </div>
+                <div class="form-group">
+                    <label>Upload Image <span>(max-size : 100mb, max-dimension: 1024x768 )</span></label>
+                    <?php echo form_upload('image', $book['image'], 'class="form-control"'); ?>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Description</label>
+                    <?php echo form_textarea('description', $book['description'], 'class="form-control"'); ?>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
         </div>

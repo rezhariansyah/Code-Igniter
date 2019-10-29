@@ -11,7 +11,7 @@
         </div>
         <div class="row">
             <div class="col-lg-8 mx-auto mb-5">
-                <?php echo form_open(); ?>
+                <?php echo form_open_multipart(); ?>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label>Title</label>
@@ -25,6 +25,10 @@
                     <div class="form-group">
                         <label>Url</label>
                         <?php echo form_input('url',null,'class="form-control" placeholder="Book-title"'); ?>
+                    </div>
+                    <div class="form-group">
+                        <label>Upload Image <span>(max-size : 100mb, max-dimension: 1024x768 )</span></label>
+                        <?php echo form_upload('image',null,'class="form-control"'); ?>
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Description</label>
